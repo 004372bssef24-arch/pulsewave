@@ -108,7 +108,8 @@ text
 ## 📸 Screenshots
 
 ### Main Interface
-![Main Interface](assets/screenshots/pulsewave-main.png)
+<img width="1366" height="734" alt="image" src="https://github.com/user-attachments/assets/38ed5497-fdfe-47d3-a0ef-5d9400d6bf25" />
+
 
 ### Real-Time Visualizer
 ![Visualizer](assets/screenshots/pulsewave-visualizer.png)
@@ -132,7 +133,7 @@ text
    cd pulsewave
 Open in browser
 
-Simply open index.html in any modern browser
+Simply open https://pulsewave-gamma.vercel.app/
 
 OR use a local server:
 
