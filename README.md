@@ -8,7 +8,7 @@
 
 ## 🚀 Live Demo
 
-**[Try PulseWave Live →]((https://pulsewave-gamma.vercel.app/))**
+**[Try PulseWave Live →](https://pulsewave-gamma.vercel.app/)**
 
 ---
 
