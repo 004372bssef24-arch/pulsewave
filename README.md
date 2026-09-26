@@ -237,8 +237,8 @@ text
 |:---|:---|
 | **GitHub Username** | `004372bssef24-arch` |
 | **GitHub URL** | `github.com/004372bssef24-arch/pulsewave` |
-| **Live Demo URL** | `https://004372bssef24-arch.github.io/pulsewave/` (after Pages deploy) |
-| **LinkedIn** | `linkedin.com/in/hasnaibaiq` |
-| **Email** | `mhasnaibaiq2005@gmail.com` |
+| **Live Demo URL** | `(https://pulsewave-gamma.vercel.app/)` (after Pages deploy) |
+| **LinkedIn** | `www.linkedin.com/in/m-hasnain-baig-6247a941a` |
+| **Email** | `mhasnaibaig2005@gmail.com` |
 
 ---
