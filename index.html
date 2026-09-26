@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="description" content="PulseWave - Professional web audio player with real-time visualization." />
+  <meta name="theme-color" content="#090B10" />
+  <title>PulseWave - Modern Web Audio Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@0.344.0" defer></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="app-container">
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+      <div class="logo">
+        <div class="logo-icon" aria-hidden="true"><i data-lucide="activity"></i></div>
+        <div><h2>PulseWave</h2><span>PRO AUDIO ENGINE</span></div>
+      </div>
+      <nav class="nav-menu">
+        <div class="menu-label" id="categories-label">Categories</div>
+        <ul class="category-filters" id="category-filters" role="tablist" aria-labelledby="categories-label">
+          <li class="cat-item active" data-category="All" role="tab" aria-selected="true" tabindex="0"><i data-lucide="layers" aria-hidden="true"></i> All Tracks</li>
+          <li class="cat-item" data-category="Lo-Fi" role="tab" aria-selected="false" tabindex="-1"><i data-lucide="coffee" aria-hidden="true"></i> Lo-Fi &amp; Chill</li>
+          <li class="cat-item" data-category="Synthwave" role="tab" aria-selected="false" tabindex="-1"><i data-lucide="zap" aria-hidden="true"></i> Synthwave &amp; Retro</li>
+          <li class="cat-item" data-category="Cyberpunk" role="tab" aria-selected="false" tabindex="-1"><i data-lucide="cpu" aria-hidden="true"></i> Cyberpunk Beat</li>
+          <li class="cat-item" data-category="Ambient" role="tab" aria-selected="false" tabindex="-1"><i data-lucide="wind" aria-hidden="true"></i> Ambient &amp; Focus</li>
+        </ul>
+        <div class="menu-label" style="margin-top:2rem;">Shortcuts</div>
+        <div class="keyboard-hints" aria-label="Keyboard shortcuts">
+          <div><kbd>Space</kbd> Play / Pause</div>
+          <div><kbd>&larr;</kbd> <kbd>&rarr;</kbd> Seek &plusmn;5s</div>
+          <div><kbd>M</kbd> Mute / Unmute</div>
+          <div><kbd>S</kbd> Shuffle</div>
+        </div>
+      </nav>
+      <div class="internship-credit"><div>Arch Tech Internship</div><strong>Task 3: Music Player</strong></div>
+    </aside>
+    <main class="main-content" id="main-content">
+      <header class="top-bar">
+        <div class="search-box">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <label for="search-input" class="sr-only">Search tracks</label>
+          <input type="text" id="search-input" placeholder="Search by track title, artist, or genre..." aria-label="Search tracks" autocomplete="off" />
+          <button id="clear-search" class="clear-btn hidden" aria-label="Clear search">&times;</button>
+        </div>
+        <div class="top-meta">
+          <div class="audio-badge"><span class="live-dot" aria-hidden="true"></span> Web Audio API Active</div>
+        </div>
+      </header>
+      <section class="hero-visualizer-card" aria-label="Now playing">
+        <div class="hero-bg-blur" id="hero-bg-blur" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="artwork-wrapper">
+            <img id="current-cover" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80" alt="Album Art" />
+            <div class="pulse-ring" aria-hidden="true"></div>
+          </div>
+          <div class="hero-details" aria-live="polite" aria-atomic="true">
+            <div class="tags-row">
+              <span class="badge" id="current-genre">Lo-Fi</span>
+              <span class="badge badge-outline">LOSSLESS</span>
+            </div>
+            <h1 id="current-title">Midnight Reverie</h1>
+            <p class="artist-name" id="current-artist">Aura &amp; Synth Lab</p>
+            <p class="track-meta-line">6 tracks &bull; Web Audio Visualizer &bull; Real-time Spectrum</p>
+            <div class="visualizer-container">
+              <canvas id="visualizer-canvas" role="img" aria-label="Audio frequency visualizer"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="up-next-indicator hidden" id="up-next-indicator" aria-live="polite">
+          <span class="up-next-label">Up Next</span>
+          <span class="up-next-title" id="up-next-title"></span>
+        </div>
+      </section>
+      <section class="tracks-section">
+        <div class="section-header">
+          <div>
+            <h3 id="section-title">All Tracks</h3>
+            <span class="track-count" id="track-count" aria-live="polite">6 songs available</span>
+          </div>
+          <div class="list-actions">
+            <button class="icon-btn-soft" id="btn-shuffle-all" title="Shuffle Play All" aria-label="Shuffle and play all tracks">
+              <i data-lucide="shuffle" aria-hidden="true"></i> Shuffle All
+            </button>
+          </div>
+        </div>
+        <div class="track-list" id="track-list" role="listbox" aria-label="Track list"></div>
+      </section>
+    </main>
+  </div>
+  <footer class="player-bar" role="region" aria-label="Audio player controls">
+    <div class="player-left">
+      <img id="bar-cover" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&q=80" alt="Cover" loading="lazy" />
+      <div class="player-info">
+        <h4 id="bar-title">Midnight Reverie</h4>
+        <span id="bar-artist">Aura &amp; Synth Lab</span>
+      </div>
+      <button class="btn-like" id="btn-like" title="Add to Favorites" aria-label="Toggle favorite" aria-pressed="false">
+        <i data-lucide="heart" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="player-center">
+      <div class="control-buttons">
+        <button class="ctrl-btn" id="btn-shuffle" title="Toggle Shuffle (S)" aria-label="Toggle shuffle" aria-pressed="false">
+          <i data-lucide="shuffle" aria-hidden="true"></i></button>
+        <button class="ctrl-btn" id="btn-prev" title="Previous Track" aria-label="Previous track">
+          <i data-lucide="skip-back" aria-hidden="true"></i></button>
+        <button class="ctrl-btn primary-play" id="btn-play" title="Play / Pause (Space)" aria-label="Play">
+          <i data-lucide="play" id="play-icon" aria-hidden="true"></i></button>
+        <button class="ctrl-btn" id="btn-next" title="Next Track" aria-label="Next track">
+          <i data-lucide="skip-forward" aria-hidden="true"></i></button>
+        <button class="ctrl-btn" id="btn-repeat" title="Repeat: Off" aria-label="Toggle repeat mode">
+          <i data-lucide="repeat" id="repeat-icon" aria-hidden="true"></i></button>
+      </div>
+      <div class="progress-container">
+        <span class="time-label" id="current-time" aria-hidden="true">0:00</span>
+        <div class="progress-bar-wrap" id="seek-bar-container" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+          <div class="progress-fill" id="seek-progress"></div>
+          <div class="progress-thumb" id="seek-thumb"></div>
+        </div>
+        <span class="time-label" id="total-duration" aria-hidden="true">0:00</span>
+      </div>
+    </div>
+    <div class="player-right">
+      <button class="speed-toggle" id="btn-speed" title="Playback Speed" aria-label="Playback speed">1.0x</button>
+      <div class="volume-container">
+        <button class="ctrl-btn" id="btn-mute" title="Mute / Unmute (M)" aria-label="Mute">
+          <i data-lucide="volume-2" id="volume-icon" aria-hidden="true"></i>
+        </button>
+        <label for="volume-slider" class="sr-only">Volume</label>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.85" aria-label="Volume" />
+        <span class="volume-tooltip" id="volume-tooltip" aria-hidden="true">85%</span>
+      </div>
+    </div>
+    <div class="toast-container" id="toast-container" aria-live="assertive" role="alert"></div>
+  </footer>
+  <audio id="audio-element" preload="metadata" crossorigin="anonymous"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
