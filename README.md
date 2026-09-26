@@ -8,7 +8,7 @@
 
 ## 🚀 Live Demo
 
-**[Try PulseWave Live →](https://004372bssef24-arch.github.io/pulsewave/)**
+**[Try PulseWave Live →]((https://pulsewave-gamma.vercel.app/))**
 
 ---
 
@@ -112,7 +112,8 @@ text
 
 
 ### Real-Time Visualizer
-![Visualizer](assets/screenshots/pulsewave-visualizer.png)
+<img width="1366" height="732" alt="image" src="https://github.com/user-attachments/assets/3643570d-882a-4e63-ac19-fc4602f9c658" />
+
 
 ### Mobile Responsive
 ![Mobile View](assets/screenshots/pulsewave-mobile.png)
